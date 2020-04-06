@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div id="test" class="alert alert-warning">
+
+        <h1>Mon nom est : {{ nameValue }} </h1>
+        <h2>Livré à : {{ livreValue }}</h2>
+
+        <form :class="(color) ? 'alert alert-success' : 'alert alert-danger'">
+            <label for="nom">Quel est ton nom ?</label>
+            <input type="text" v-model="nameValue" name="nom"/><br>
+            <label for="livre">Je livre à qui ?</label>
+            <input type="text" name="livre" v-model="livraison"/>
+            <input type="button" name="valid" value="Valider" v-on:click="livreValue = livraison"/><br>
+            <input type="checkbox" name="color" v-on:click="color = !color">Change ma couleur !</input><br>
+            <input type="checkbox" name="picture" v-on:click="cat = !cat">C'est parti !</input><br>
+
+            <img src="https://cdn-s-www.ledauphine.com/images/A2B51F63-FA5C-463B-B27E-3FDCDBDA7CFD/NW_detail/title-1558093797.jpg" v-show="cat" width="200px" height="200px"/>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let test = new Vue({
+            el: '#test',
+            data: {
+                nameValue: "",
+                livreValue: "",
+                livraison: "",
+                livreShow: false,
+                color: false,
+                cat: false
+            }
+        })
+    </script>
+</body>
+</html>
