@@ -18,8 +18,8 @@
             <label for="livre">Je livre à qui ?</label>
             <input type="text" name="livre" v-model="livraison"/>
             <input type="button" name="valid" value="Valider" v-on:click="livreValue = livraison"/><br>
-            <input type="checkbox" v-model="color">Change ma couleur !</input><br>
-            <input type="checkbox" v-model="cat">C'est parti !</input><br>
+            <input type="checkbox" :value="livraison">Change ma couleur !</input><br>
+            <input type="checkbox" v-model="cat" v-on:click="change">C'est parti !</input><br>
 
             <img src="https://cdn-s-www.ledauphine.com/images/A2B51F63-FA5C-463B-B27E-3FDCDBDA7CFD/NW_detail/title-1558093797.jpg" v-show="cat" width="200px" height="200px"/>
         </form>
@@ -37,6 +37,12 @@
                 livreShow: false,
                 color: false,
                 cat: false
+            },
+
+            methods: {
+                change: function () {
+                    this.nameValue = this.nameValue.split('').reverse().join('')
+                }
             }
         })
     </script>
